@@ -27,3 +27,13 @@ Run the administration tools from the repository root. The height interface is a
 Use Gunicorn behind Nginx. Adapt `deploy/field-atlas.service` to your service account and install location. The service user must be able to read the app and write `data/` for refreshes. Install the unit in `/etc/systemd/system/`, then `systemctl daemon-reload` and `systemctl enable --now field-atlas`. `deploy/nginx.example.conf` contains the proxy location for an existing TLS site. Leave Gunicorn on loopback. Keep certificates, private keys and backups outside Git. Do not install this second service alongside an existing atlas already listening on port 8000.
 
 For data sources, model limitations and attribution see [data notes](docs/original-notes.md). Vendored JavaScript licences are under `static/`. No blanket licence is asserted over third-party datasets.
+
+## Compare repeaters and keep field notes
+
+Set a postcode and select **Compare nearby repeaters**. The app checks the nearest 20 repeater records (independent of directory filters), using the selected origin antenna height and each repeater’s reported height or a 6 m assumption. Worst sampled clearance includes the endpoints and uses the same effective-Earth model as the single-path chart. Higher minimum clearance ranks first, then shorter distance. This is not an RF coverage ranking. Click a row to inspect the path; change your origin height and reopen to rerank.
+
+**Field-test log** records a manual observation against the selected profile. Direct replies, relayed replies and unknown routes are distinct. Entries include postcode, heights, node public key, predicted clearance and timestamp. The log is held in local browser storage, not the catalogue or server. JSON export includes the postcode, so review it before sharing.
+
+Run `node --test tests/field-tools.cjs` to verify clearance calculations.
+
+For an optional end-to-end test, install the data pack, run `python -m pip install playwright` and `python -m playwright install --with-deps chromium` in the app environment, then run `python tests/browser_smoke.py` from the repository root. It starts a temporary loopback test server and uses a disposable browser context; no observations are posted or imported.
