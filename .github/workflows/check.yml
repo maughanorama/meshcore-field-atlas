@@ -10,3 +10,4 @@ jobs:
           python-version: '3.12'
       - run: python -m compileall -q server.py tools
       - run: node --check static/app.js
+      - run: node --test tests/field-tools.cjs
