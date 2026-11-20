@@ -1,0 +1,11 @@
+## Terrain, sources and attribution
+
+The national catalogue, relief, OS 50 m Great Britain grids, Copernicus GLO-90 grids for Northern Ireland, regional fallback grids and GB postcode lookup are installed from the separate data pack. Northern Ireland postcode lookups, postcode fallback, catalogue refresh, and optional street tiles require internet. Stored terrain grids are quantised to the nearest metre; profile samples are bilinearly interpolated, with clamping at tile edges. The 4/3-Earth-radius model checks the whole sampled profile, not just the points rendered. Positive clearance includes both endpoints; it is not Fresnel clearance. No radio transmission, endpoint probing or device communication is performed.
+
+## Data
+- [MeshCore public map](https://map.meshcore.dev/) — binary map feed, including all published node types with positions inside the ONS UK boundary. Public keys distinguish co-located adverts. Use **Data & method → Refresh public catalogue** for a newer snapshot (15-minute refresh cache). Offshore coordinates and Crown Dependencies are outside scope.
+- ONS Countries (December 2024) Boundaries UK BGC — Open Government Licence; country classification is point-in-polygon, so shoreline rounding can affect coastal nodes.
+- Ordnance Survey Terrain 50, May 2026, and Code-Point Open. Contains OS data © Crown copyright and database right 2026. Code-Point Open also contains Royal Mail data © Royal Mail copyright and database right 2026 and National Statistics data © Crown copyright and database right 2026.
+- [Copernicus DEM GLO-90](https://registry.opendata.aws/copernicus-dem/), EGM2008 surface heights. Produced using Copernicus WorldDEM-30 © DLR e.V. 2010–2014 and © Airbus Defence and Space GmbH 2014–2018 provided under COPERNICUS by the European Union and ESA; all rights reserved.
+- Regional terrain: [AWS Terrain Tiles / Mapzen](https://registry.opendata.aws/terrain-tiles/), Terrarium zoom 8, sea floor clamped to zero. Land and sea transitions or mixed vertical datums may introduce discrepancies. National overview is derived from the same regional terrain.
+- Postcodes.io / ONSPD. Optional street tiles © OpenStreetMap contributors. Leaflet and Leaflet.markercluster: BSD-2-Clause / MIT respectively.

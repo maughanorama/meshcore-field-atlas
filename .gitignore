@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+*.pem
+*.key
+data/
+*.zip
+*.csv
+height-add-on-backups/
+static/operator-heights.json

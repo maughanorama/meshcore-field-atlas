@@ -1,0 +1,13 @@
+[Unit]
+Description=Field Atlas terrain planner
+After=network.target
+[Service]
+User=fieldatlas
+WorkingDirectory=/opt/field-atlas
+ExecStart=/opt/field-atlas/.venv/bin/gunicorn --bind 127.0.0.1:8000 --workers 1 --threads 4 server:app
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+[Install]
+WantedBy=multi-user.target

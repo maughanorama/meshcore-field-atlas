@@ -1,0 +1,9 @@
+Flask
+requests
+numpy
+scipy
+pyproj
+shapely>=2.1
+msgpack
+Pillow
+gunicorn
